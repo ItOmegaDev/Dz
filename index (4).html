@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Class A1 Website</title>
+  <meta name="description" content="Website of A1 class">
+  <meta name="keywords" content="A1 class, Team project, your school's name">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #e8292a;
+      --gold: #f5c842;
+      --dark: #1a1a2e;
+      --off-white: #faf8f3;
+      --gray: #6b6b6b;
+      --light-gray: #efefef;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; right: 0;
+      width: 200px; height: 100vh;
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      box-shadow: -4px 0 24px rgba(0,0,0,.18);
+    }
+    .nav-brand {
+      background: var(--red);
+      padding: 28px 20px 18px;
+      text-align: center;
+    }
+    .nav-brand h2 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: 1.4rem;
+      line-height: 1.1;
+    }
+    .nav-brand span {
+      display: block;
+      font-size: .72rem;
+      color: rgba(255,255,255,.75);
+      letter-spacing: .08em;
+      margin-top: 4px;
+    }
+    nav a {
+      color: rgba(255,255,255,.82);
+      text-decoration: none;
+      font-size: .9rem;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: background .2s, color .2s, padding-left .2s;
+    }
+    nav a:hover, nav a.active {
+      background: rgba(232,41,42,.2);
+      color: var(--gold);
+      padding-left: 32px;
+    }
+
+    /* MAIN */
+    main { margin-right: 200px; min-height: 100vh; }
+
+    /* HERO */
+    .hero {
+      background: var(--dark);
+      color: #fff;
+      padding: 90px 60px 70px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: var(--red);
+      opacity: .13;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: .1;
+    }
+    .hero-label {
+      font-size: .75rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.05;
+      font-weight: 900;
+    }
+    .hero h1 em { color: var(--red); font-style: normal; }
+    .hero p {
+      margin-top: 14px;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      max-width: 420px;
+      line-height: 1.65;
+    }
+    .hero-badge {
+      display: inline-block;
+      margin-top: 30px;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 700;
+      font-size: .82rem;
+      letter-spacing: .06em;
+      padding: 10px 22px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(245,200,66,.5); }
+      50%      { box-shadow: 0 0 0 10px rgba(245,200,66,0); }
+    }
+
+    /* SECTION */
+    section { padding: 60px 60px; }
+    section.alt { background: #fff; }
+    .section-label {
+      font-size: .7rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+    .section-title span { color: var(--red); }
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+    }
+    .gallery-item {
+      aspect-ratio: 4/3;
+      border-radius: 6px;
+      background: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: #bbb;
+      cursor: pointer;
+      transition: background .25s, transform .25s;
+    }
+    .gallery-item:hover { background: #ddd; transform: scale(1.03); }
+
+    /* LINKS */
+    .links-list { list-style: none; }
+    .links-list li { margin-bottom: 11px; }
+    .links-list a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--dark);
+      font-size: .95rem;
+      padding: 13px 20px;
+      background: var(--off-white);
+      border-radius: 6px;
+      border: 1px solid #e0e0e0;
+      transition: background .2s, color .2s, transform .15s;
+    }
+    .links-list a::before { content: '→'; font-weight: 700; }
+    .links-list a:hover {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+      transform: translateX(5px);
+    }
+
+    /* CONTACT */
+    .contact-form { max-width: 480px; }
+    .form-group { margin-bottom: 18px; }
+    label {
+      display: block;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: var(--gray);
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #ddd;
+      border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      background: #fff;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    input:focus, textarea:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(232,41,42,.1);
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    .btn {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 13px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .88rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .btn:hover { background: #c71f20; transform: translateY(-1px); }
+    .success-msg {
+      display: none;
+      background: #d4edda;
+      color: #155724;
+      padding: 13px 18px;
+      border-radius: 4px;
+      margin-top: 14px;
+      font-weight: 500;
+    }
+
+    /* SITE INFO */
+    .site-info {
+      border-top: 2px solid var(--light-gray);
+      padding: 22px 60px;
+      font-size: .78rem;
+      color: var(--gray);
+      background: #fff;
+    }
+
+    /* PAGES */
+    .page { display: none; }
+    .page.active { display: block; animation: fadeIn .4s ease; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { position: sticky; width: 100%; height: auto; flex-direction: row; flex-wrap: wrap; }
+      .nav-brand { width: 100%; }
+      nav a { flex: 1; text-align: center; padding: 12px 6px; font-size: .78rem; }
+      main { margin-right: 0; }
+      .hero { padding: 44px 22px 50px; }
+      section { padding: 44px 22px; }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); }
+      .site-info { padding: 18px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <h2>Our class</h2>
+    <span>website of A1 class</span>
+  </div>
+  <a href="#" class="active" onclick="return show('home',this)">Home</a>
+  <a href="#" onclick="return show('gallery',this)">Gallery</a>
+  <a href="#" onclick="return show('links',this)">Links</a>
+  <a href="#" onclick="return show('contact',this)">Contact us</a>
+</nav>
+
+<main>
+
+  <!-- HOME -->
+  <div id="home" class="page active">
+    <div class="hero">
+      <p class="hero-label">Welcome</p>
+      <h1>Our<br><em>Class A1</em></h1>
+      <p>A short message to greet the visitors of our website.</p>
+      <p>A short description about the website, the project and your class.</p>
+      <span class="hero-badge">Good luck with your new website!</span>
+    </div>
+    <div class="site-info">
+      © 2013 Binary Logic SA.<br>
+      Digital Kids and Digital Teens are trademarks of Binary Logic SA.
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div id="gallery" class="page">
+    <div class="hero">
+      <p class="hero-label">Our photos</p>
+      <h1>Photo<br><em>Gallery</em></h1>
+      <p>Add your class photos here. Use HTML5 multimedia controls for video or audio.</p>
+    </div>
+    <section>
+      <p class="section-label">Class photos</p>
+      <h2 class="section-title">Our <span>moments</span></h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">🖼️</div>
+        <div class="gallery-item">📸</div>
+        <div class="gallery-item">🎓</div>
+        <div class="gallery-item">🏫</div>
+        <div class="gallery-item">✏️</div>
+        <div class="gallery-item">🌟</div>
+      </div>
+    </section>
+    <div class="site-info">
+      © 2013 Binary Logic SA.<br>
+      Digital Kids and Digital Teens are trademarks of Binary Logic SA.
+    </div>
+  </div>
+
+  <!-- LINKS -->
+  <div id="links" class="page">
+    <div class="hero">
+      <p class="hero-label">Other teams</p>
+      <h1>Class<br><em>Links</em></h1>
+      <p>Here is a list of the websites of other teams.</p>
+    </div>
+    <section>
+      <p class="section-label">Friends' sites</p>
+      <h2 class="section-title">Team <span>websites</span></h2>
+      <ul class="links-list">
+        <li><a href="#">Team 1 website</a></li>
+        <li><a href="#">Team 2 website</a></li>
+        <li><a href="#">Team 3 website</a></li>
+      </ul>
+    </section>
+    <div class="site-info">
+      © 2013 Binary Logic SA.<br>
+      Digital Kids and Digital Teens are trademarks of Binary Logic SA.
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="page">
+    <div class="hero">
+      <p class="hero-label">Get in touch</p>
+      <h1>Contact<br><em>Us!</em></h1>
+      <p>Send us a message and tell us what you think of our website.</p>
+    </div>
+    <section>
+      <div class="contact-form">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" placeholder="Your message..."></textarea>
+        </div>
+        <button class="btn" onclick="sendMsg()">Send message</button>
+        <div class="success-msg" id="ok">✓ Message sent!</div>
+      </div>
+    </section>
+    <div class="site-info">
+      © 2013 Binary Logic SA.<br>
+      Digital Kids and Digital Teens are trademarks of Binary Logic SA.
+    </div>
+  </div>
+
+</main>
+
+<script>
+  function show(id, link) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    link.classList.add('active');
+    return false;
+  }
+
+  function sendMsg() {
+    const n = document.getElementById('name').value.trim();
+    const e = document.getElementById('email').value.trim();
+    const m = document.getElementById('message').value.trim();
+    if (!n || !e || !m) { alert('Please fill in all fields.'); return; }
+    document.getElementById('ok').style.display = 'block';
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('message').value = '';
+  }
+</script>
+
+</body>
+</html>
